@@ -69,15 +69,16 @@ app.post('/webhook', (req, res) => {
                     'id': sender_psid
                 },
                 'message': {
-                    'text': responses[Math.floor(Math.random() * responses.length)]
-                },
-                'attachment':{
-                    'type': 'audio',
-                    "payload":{
-                        "url":"https://meeseeks-box.herokuapp.com/audio.mp3", 
-                        "is_reusable":true
+                    'text': responses[Math.floor(Math.random() * responses.length)],
+                    'attachment':{
+                        'type': 'audio',
+                        "payload":{
+                            "url":"https://meeseeks-box.herokuapp.com/audio.mp3", 
+                            "is_reusable":true
+                        }
                     }
                 }
+               
             };
 
             // Send the HTTP request to the Messenger Platform
