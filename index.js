@@ -5,7 +5,8 @@ const request = require('request');
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  app = express().use(bodyParser.json()); // creates express http server
+  app = express().use(bodyParser.json());
+  app.use(express.static(__dirname + '/public')); // creates express http server
 
 // Your verify token. Should be a random string.
 const VERIFY_TOKEN = "7b43e3b3a7ed6b323151dd345e07657c"
@@ -71,7 +72,7 @@ app.post('/webhook', (req, res) => {
                     'text': responses[Math.floor(Math.random() * responses.length)]
                 },
                 'attachment':{
-                    'type': 'audio'
+                    'type': 'audio',
                     "payload":{
                         "url":"http://www.messenger-rocks.com/image.jpg", 
                         "is_reusable":true
