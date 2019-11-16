@@ -36,6 +36,11 @@ app.post('/webhook', (req, res) => {
   });
 
   // Adds support for GET requests to our webhook
+app.get('/test', (req, res) => {
+  res.sendStatus(200).send('asdf');  
+}
+
+  // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
 
     // Your verify token. Should be a random string.
