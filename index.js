@@ -138,7 +138,7 @@ app.post('/webhook', (req, res) => {
                      'attachment':{
                         'type': 'audio',
                         "payload":{
-                            "url": audios[Math.floor(Math.random()* responses.length)], 
+                            "url": audios[Math.floor(Math.random()* audios.length)], 
                             "is_reusable":true
                         }
                     }
