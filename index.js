@@ -69,8 +69,32 @@ app.post('/webhook', (req, res) => {
                     'id': sender_psid
                 },
                 'message': {
-                    'text': responses[Math.floor(Math.random() * responses.length)],
-                    'attachment':{
+                    'text': responses[Math.floor(Math.random() * responses.length)]
+                    
+                }
+               
+            };
+
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": "https://graph.facebook.com/v5.0/me/messages",
+                "qs": {"access_token": OAUTH_TOKEN},
+                "method": "POST",
+                "json": respMsg
+            }, (err, res, body) => {
+                if (!err) {
+                    console.log('message sent!')
+                } else {
+                    console.error("Unable to send message:" + err);
+                }
+            });
+
+            const respAudio = {
+                'recipient': {
+                    'id': sender_psid
+                },
+                'message': {
+                     'attachment':{
                         'type': 'audio',
                         "payload":{
                             "url":"https://meeseeks-box.herokuapp.com/audio.mp3", 
@@ -86,7 +110,7 @@ app.post('/webhook', (req, res) => {
                 "uri": "https://graph.facebook.com/v5.0/me/messages",
                 "qs": {"access_token": OAUTH_TOKEN},
                 "method": "POST",
-                "json": respMsg
+                "json": respAudio
             }, (err, res, body) => {
                 if (!err) {
                     console.log('message sent!')
