@@ -42,6 +42,47 @@ const responses = [
   "Excuse me. I'm a bit of a stickler Meeseeks. What about your short game?"
 ];
 
+const audios = [
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42422.mp3?md5=bXuQ-EMAKqWTdk8wewftEw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42423.mp3?md5=-VKTtIu77-cC6fl5e512Cw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42424.mp3?md5=PWIQ7Pgz6fvAZeGvJljUWw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42425.mp3?md5=BCKON_PheJh2PlsR39aYew&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42426.mp3?md5=jcVWkJKFEAcl3ZL2EGnZvw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42427.mp3?md5=yx58PlVQyL3h_vA1mS0Vdw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42428.mp3?md5=YUyA_xNCnl1RBIumILKavA&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42429.mp3?md5=N8RcV72deJyPpv6JmS1_yQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42430.mp3?md5=Il95WibrksxHxERwHKdRLA&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42431.mp3?md5=Ymwajajn5TuYAptia4EbnQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42432.mp3?md5=WOZ96LUwJ8d6Y6MYXNquNw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42433.mp3?md5=mp_izAW20fsAUpSgrxRb5g&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42434.mp3?md5=saKc8BkUpjsfvQQ4puJGVQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42435.mp3?md5=4RKFw8ujXCkYv7FKDwnhgg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42436.mp3?md5=lszvIGhq2whoHwnFSkkFLg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42437.mp3?md5=rEVMcquoY2J7drRUzM4OSQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42438.mp3?md5=TaUnrspgP70Wdhivox8PAQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42440.mp3?md5=x23GV0E18ZoIvQPZ15oV_A&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42439.mp3?md5=LHwWSp1K7LRF0VnzYvJMxg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42444.mp3?md5=_ia-jk2eBFRfkQiyFIsK8w&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42441.mp3?md5=nc9kbpSZ7Sii4neMYsFNCA&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42442.mp3?md5=MBZ-RZGp8NP0rYME7xeC5Q&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42443.mp3?md5=OSEsdLJvT-iz7_O4Z97L-g&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42445.mp3?md5=vKletEAl5j9iovGbgOYQlw&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42459.mp3?md5=kFpmptm_ixXHltqmcw6Rqg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42458.mp3?md5=7Dti3EMmYwfi999D3QrIpg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42446.mp3?md5=GCLGPqc3TD93y14xC2wcog&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42447.mp3?md5=akeyYl5KyEowKrm1cTl16Q&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42448.mp3?md5=RvtlTSBt7JVSrRRPQR_jmQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42449.mp3?md5=jCWBkeJN1TG73o_yVnD-Ig&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42450.mp3?md5=jUiHemq5yBbG9cDEW40ONg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42451.mp3?md5=gYe09QO7Sxn3_e28abPKXA&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42452.mp3?md5=rtaa1fPwn3yApknJiV4RJQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42453.mp3?md5=Xzfdnj4E3MveqII0uyroyQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42454.mp3?md5=xHzuu-1ZZaR9uqoCy-mkHg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42455.mp3?md5=ze64PVUcg5MI8nX29edSJQ&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42457.mp3?md5=6MZrm9SghCZ9U19tUEwLCg&expires=1573947830",
+    "https://www.101soundboards.com/storage/board_sounds_rendered/42456.mp3?md5=kMIPM1Ihh84vpAFwLBQ16Q&expires=1573947830"
+];
+
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
