@@ -138,7 +138,7 @@ app.post('/webhook', (req, res) => {
                      'attachment':{
                         'type': 'audio',
                         "payload":{
-                            "url":"https://meeseeks-box.herokuapp.com/audio.mp3", 
+                            "url": audios[Math.floor(Math.random()* responses.length)], 
                             "is_reusable":true
                         }
                     }
