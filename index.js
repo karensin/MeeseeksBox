@@ -70,6 +70,13 @@ app.post('/webhook', (req, res) => {
                 'message': {
                     'text': responses[Math.floor(Math.random() * responses.length)]
                 },
+                'attachment':{
+                    'type': 'audio'
+                    "payload":{
+                        "url":"http://www.messenger-rocks.com/image.jpg", 
+                        "is_reusable":true
+                    }
+                }
             };
 
             // Send the HTTP request to the Messenger Platform
