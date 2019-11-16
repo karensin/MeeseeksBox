@@ -1,0 +1,4 @@
+with open('messages.json', 'r') as fh:
+    with open('messages.txt', 'w') as output:
+    	b = fh.read()
+    	print b
