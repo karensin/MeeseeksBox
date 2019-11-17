@@ -84,23 +84,18 @@ const audios = [
 ];
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+app.listen(80, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
- 
     let body = req.body;
-    console.log('wtf');
-  
     // Checks this is an event from a page subscription
-    if (body.object === 'page') {
+    if (body.object === 'page' && body.entry) {
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function (entry) {
-
             // Gets the message. entry.messaging is an array, but
             // will only ever contain one message, so we get index 0
             let webhook_event = entry.messaging[0];
-            console.log(webhook_event);
 
             const sender_psid = webhook_event.sender.id;
             console.log('Sender PSID: ' + sender_psid);
@@ -113,22 +108,10 @@ app.post('/webhook', (req, res) => {
                     'text': responses[Math.floor(Math.random() * responses.length)]
                     
                 }
-               
             };
 
             // Send the HTTP request to the Messenger Platform
-            request({
-                "uri": "https://graph.facebook.com/v5.0/me/messages",
-                "qs": {"access_token": OAUTH_TOKEN},
-                "method": "POST",
-                "json": respMsg
-            }, (err, res, body) => {
-                if (!err) {
-                    console.log('message sent!')
-                } else {
-                    console.error("Unable to send message:" + err);
-                }
-            });
+            sendRequest(respMsg);
 
             const respAudio = {
                 'recipient': {
@@ -143,43 +126,45 @@ app.post('/webhook', (req, res) => {
                         }
                     }
                 }
-               
             };
 
             // Send the HTTP request to the Messenger Platform
-            request({
-                "uri": "https://graph.facebook.com/v5.0/me/messages",
-                "qs": {"access_token": OAUTH_TOKEN},
-                "method": "POST",
-                "json": respAudio
-            }, (err, res, body) => {
-                if (!err) {
-                    console.log('message sent!')
-                } else {
-                    console.error("Unable to send message:" + err);
-                }
-            });
-
-            // Returns a '200 OK' response to all requests
-            res.status(200).json();
+            sendRequest(respAudio);
         });
+        // Returns a '200 OK' response to all requests
+        res.status(200).json();
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
     }
 });
 
+const sendRequest = respAudio => {
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v5.0/me/messages",
+        "qs": {"access_token": OAUTH_TOKEN},
+        "method": "POST",
+        "json": respAudio
+    }, (err, _, body) => {
+        console.log("---------------------------------------------------");
+        console.log("Response from Facebook: " + JSON.stringify(body));
+        console.log("---------------------------------------------------");
+        if (!err) {
+            console.log('message sent!')
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    });
+};
+
 // the
-  // Adds support for GET requests to our webhook
-app.get('/test', (req, res) => {
-  res.send('asdf').sendStatus(200);
+app.get('/', (req, res) => {
+  res.sendStatus(200);
 });
 
   // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
-
-
-      
     // Parse the query params
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
@@ -198,4 +183,4 @@ app.get('/webhook', (req, res) => {
     }
     // Responds with '403 Forbidden' if verify tokens do not match
     res.sendStatus(403);      
-  });
+});
